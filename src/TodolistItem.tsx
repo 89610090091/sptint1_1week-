@@ -1,7 +1,17 @@
-export const TodoLisItems = (props: any) => {
+
+type Props = {
+    title: string;
+}
+
+
+export const TodoLisItems = ({ title }: Props) => {
+    // #2export const TodoLisItems = (props: Props) => {
+
+    // #1 const { title } = props 
+
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3>{title}</h3>
             <div>
                 <input />
                 <button>+</button>
