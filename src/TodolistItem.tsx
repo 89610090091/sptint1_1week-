@@ -1,8 +1,14 @@
 type Props = {
     title: string
+    subTitle: string
+    description: string
+    tasks: Task[]
 }
 
-export const TodolistItem = (props: Props) => {
+export const TodolistItem = ({ title, subTitle, description, tasks }: Props) => {
+
+    // const { title, subTitle, description, tasks } = props
+
     return (
         <div>
             <h3>{title}</h3>
