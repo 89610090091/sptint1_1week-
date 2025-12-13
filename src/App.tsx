@@ -18,7 +18,12 @@ export const App = () => {
     { id: 6, title: 'RTK query', isDone: false },
   ]
 
-  const tasks2: Task[] = []
+  const tasks2: Task[] = [
+    { id: 1, title: 'Hello world', isDone: true },
+    { id: 2, title: 'I am Happy', isDone: false },
+    { id: 3, title: 'Yo', isDone: false },
+    { id: 4, title: 'Redux', isDone: false },
+  ]
 
   return (
     <div className="app">
