@@ -3,9 +3,10 @@ import { Task } from "./App"
 type Props = {
     title: string
     tasks: Task[]
+    date?: string
 }
 
-export const TodolistItem = ({ title, tasks }: Props) => {
+export const TodolistItem = ({ title, tasks, date }: Props) => {
 
     // const { title, tasks } = props
 
@@ -17,26 +18,41 @@ export const TodolistItem = ({ title, tasks }: Props) => {
                 <button>+</button>
             </div>
             <ul>
-                <ul>
-                    <li>
-                        <input type="checkbox" checked={tasks[0].isDone} />
-                        <span>{tasks[0].title}</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" checked={tasks[1].isDone} />
-                        <span>{tasks[1].title}</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" checked={tasks[2].isDone} />
-                        <span>{tasks[2].title}</span>
-                    </li>
-                </ul>
+                {tasks.map(task => {
+                    return (
+                        <li>
+                            <input type="checkbox" checked={task.isDone} />
+                            <span>{task.title}</span>
+                        </li>
+                    )
+                })}
             </ul>
+
+            // old example
+            {/* <ul>
+                <li>
+                    <input type="checkbox" checked={tasks[0].isDone} />
+                    <span>{tasks[0].title}</span>
+                </li>
+                <li>
+                    <input type="checkbox" checked={tasks[1].isDone} />
+                    <span>{tasks[1].title}</span>
+                </li>
+                <li>
+                    <input type="checkbox" checked={tasks[2].isDone} />
+                    <span>{tasks[2].title}</span>
+                </li>
+                <li>
+                    <input type="checkbox" checked={tasks[3].isDone} />
+                    <span>{tasks[3].title}</span>
+                </li>
+            </ul> */}
             <div>
                 <button>All</button>
                 <button>Active</button>
                 <button>Completed</button>
             </div>
+            <div>{date}</div>
         </div>
     )
 }
