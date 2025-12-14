@@ -1,4 +1,5 @@
 import { Task } from "./App"
+import { Button } from "./Button"
 
 type Props = {
     title: string
@@ -29,9 +30,12 @@ export const TodolistItem = ({ title, tasks, date }: Props) => {
             </ul>
 
             <div>
-                <button>All</button>
+                <Button title={'All'} />
+                <Button title={'Active'} />
+                <Button title={'Completed'} />
+                {/* <button>All</button>
                 <button>Active</button>
-                <button>Completed</button>
+                <button>Completed</button> */}
             </div>
 
             <div>{date}</div>
