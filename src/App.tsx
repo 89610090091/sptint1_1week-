@@ -18,7 +18,11 @@ export const App = () => {
     { id: 6, title: 'RTK query', isDone: false },
   ]
 
-  const tasks2: Task[] = []
+  // sprint1- 7 ternary-operator 
+  const tasks2: Task[] = [
+
+  ]
+
 
   return (
     <div className="app">
