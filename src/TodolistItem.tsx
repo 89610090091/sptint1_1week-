@@ -28,7 +28,7 @@ export const TodolistItem = ({ title, tasks, date }: Props) => {
                 })}
             </ul>
 
-            // old example
+            // old code example
             {/* <ul>
                 <li>
                     <input type="checkbox" checked={tasks[0].isDone} />
