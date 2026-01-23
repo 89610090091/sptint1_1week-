@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import './App.css'
 import { TodolistItem } from './TodoListItem'
+import { v1 } from 'uuid'
 
 export type Task = {
-  id: number
+  id: string
   title: string
   isDone: boolean
 }
@@ -15,13 +16,17 @@ export const App = () => {
   const [filter, setFilter] = useState<FilterValues>('all')
 
   let [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: 'HTML&CSS', isDone: true },
-    { id: 2, title: 'JS', isDone: true },
-    { id: 3, title: 'ReactJS', isDone: false },
-    { id: 4, title: 'Redux', isDone: false },
-    { id: 5, title: 'Typescript', isDone: false },
-    { id: 6, title: 'RTK query', isDone: false },
+    { id: v1(), title: 'HTML&CSS', isDone: true },
+    { id: v1(), title: 'JS', isDone: true },
+    { id: v1(), title: 'ReactJS', isDone: false },
+    { id: v1(), title: 'Redux', isDone: false },
   ])
+
+  const creatTask = () => {
+    const newTask = { id: v1(), title: 'New task', isDone: false }
+    const newTasks = [newTask, ...tasks]
+    setTasks(newTasks)
+  }
 
   const changeFilter = (filter: FilterValues) => {
     setFilter(filter)
@@ -47,7 +52,8 @@ export const App = () => {
       <TodolistItem title="What to learn"
         tasks={filteredTasks}
         deleteTask={deleteTask}
-        changeFilter={changeFilter} />
+        changeFilter={changeFilter}
+        creatTask={creatTask} />
     </div>
   )
 }

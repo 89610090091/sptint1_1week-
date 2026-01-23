@@ -5,18 +5,19 @@ import { Button } from './Button'
 export type Props = {
     title: string
     tasks: Task[]
-    deleteTask: (taskId: number) => void
+    deleteTask: (taskId: string) => void
     changeFilter: (filter: FilterValues) => void
+    creatTask: () => void
 }
 
-export const TodolistItem = ({ title, tasks, deleteTask, changeFilter }: Props) => {
+export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, creatTask }: Props) => {
     return (
         <div className="app">
             <div>
                 <h3>{title}</h3>
                 <div>
                     <input />
-                    <Button title={'+'} />
+                    <Button title={'+'} onClick={creatTask} />
                 </div>
                 <ul>
                     {tasks.length === 0 ? <p>Тасок нет</p> :
