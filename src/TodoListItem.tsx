@@ -32,6 +32,21 @@ export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, createTas
         }
     }
 
+    const mappedTaskHandler = tasks.length === 0 ? <p>Тасок нет</p> :
+        tasks.map(task => {
+            const deleteTaskHandler = () => {
+                deleteTask(task.id)
+            }
+
+            return (
+                <li key={task.id}>
+                    <input type="checkbox" checked={task.isDone} />
+                    <span>{task.title}</span>
+                    <Button title={'x'} onClick={deleteTaskHandler} />
+                </li>
+            )
+        })
+
     return (
         <div className="app">
             <div>
@@ -39,11 +54,14 @@ export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, createTas
                 <div>
                     <input value={taskTitle}
                         onChange={changeTaskTitleHandler}
-                        onKeyDown={createTaskOnEnterHandler} />
+                        onKeyDown={createTaskOnEnterHandler}
+                    />
 
                     <Button title={'add'}
                         onClick={() => { createTaskHandler() }}
-                        disabled={!taskTitle || taskTitle.length > 10} />
+                        disabled={!taskTitle || taskTitle.length > 10}
+                    />
+
                     {/* <Button title={'+'}
                         onClick={() => {
                             if (inputRef.current) {
@@ -51,6 +69,7 @@ export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, createTas
                                 inputRef.current.value = ''
                             }
                         }} /> */}
+
                 </div>
 
                 {!taskTitle && <div>Max title lenght is 10 charters</div>}
@@ -58,20 +77,7 @@ export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, createTas
                 {taskTitle && taskTitle.length <= 9 && <div>Your title lenght is {taskTitle.length} charters</div>}
 
                 <ul>
-                    {tasks.length === 0 ? <p>Тасок нет</p> :
-                        tasks.map(task => {
-                            const deleteTaskHandler = () => {
-                                deleteTask(task.id)
-                            }
-
-                            return (
-                                <li key={task.id}>
-                                    <input type="checkbox" checked={task.isDone} />
-                                    <span>{task.title}</span>
-                                    <Button title={'x'} onClick={deleteTaskHandler} />
-                                </li>
-                            )
-                        })}
+                    {mappedTaskHandler}
                 </ul>
                 <div>
                     <Button title={'All'} onClick={() => changeFilter('all')} />
