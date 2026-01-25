@@ -41,8 +41,9 @@ export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, createTas
                         onChange={changeTaskTitleHandler}
                         onKeyDown={createTaskOnEnterHandler} />
 
-                    <Button title={'+'}
-                        onClick={() => { createTaskHandler() }} />
+                    <Button title={'add'}
+                        onClick={() => { createTaskHandler() }}
+                        disabled={!taskTitle || taskTitle.length > 10} />
                     {/* <Button title={'+'}
                         onClick={() => {
                             if (inputRef.current) {
@@ -51,6 +52,11 @@ export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, createTas
                             }
                         }} /> */}
                 </div>
+
+                {!taskTitle && <div>Max title lenght is 10 charters</div>}
+                {taskTitle.length > 10 && <div style={{ color: 'red' }}>Max title lenght is 10 charters</div>}
+                {taskTitle && taskTitle.length <= 9 && <div>Your title lenght is {taskTitle.length} charters</div>}
+
                 <ul>
                     {tasks.length === 0 ? <p>Тасок нет</p> :
                         tasks.map(task => {
@@ -73,7 +79,7 @@ export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, createTas
                     <Button title={'Completed'} onClick={() => changeFilter('completed')} />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
